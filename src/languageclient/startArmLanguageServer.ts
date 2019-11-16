@@ -171,7 +171,7 @@ async function acquireDotnet(dotnetExePath: string): Promise<string> {
             actionContext.telemetry.properties.overriddenDotNetExePath = "false";
 
             ext.outputChannel.appendLine(`This extension requires .NET Core for full functionality.`);
-            dotnetExePath = await dotnetAcquire(dotnetVersion, actionContext.telemetry.properties, actionContext.telemetry.properties/*asdf*/);
+            dotnetExePath = await dotnetAcquire(dotnetVersion, actionContext.telemetry.properties, actionContext.errorHandling.issueProperties);
             if (!(await isFile(dotnetExePath))) {
                 throw new Error(`The path returned for .net core does not exist: ${dotnetExePath}`);
             }
@@ -247,7 +247,7 @@ async function ensureDependencies(dotnetExePath: string, serverDllPath: string):
                 '--help'
             ],
             actionContext.telemetry.properties,
-            actionContext.telemetry.properties/*asdf*/);
+            actionContext.errorHandling.issueProperties);
     });
 }
 

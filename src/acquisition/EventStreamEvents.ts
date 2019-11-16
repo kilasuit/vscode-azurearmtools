@@ -85,6 +85,6 @@ export class DotnetAcquisitionMessage implements IEvent {
     }
 
     public getMessage(): string {
-        return `[dotnet ${this.version}: ${this.message}]`;
+        return `[dotnet ${this.version}]: ${this.message}`;
     }
 }

@@ -38,7 +38,7 @@ export class StatusBarObserver implements IEventStreamObserver {
                 break;
             default:
                 // tslint:disable-next-line: no-console
-                console.log(`StatusBarObserver.post: Unexpected event type ${event.eventType}`); //asdf
+                console.log(`StatusBarObserver.post: Unexpected event type ${event.eventType}`);
                 break;
         }
     }
