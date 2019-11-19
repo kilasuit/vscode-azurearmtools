@@ -50,7 +50,7 @@ export class OutputChannelObserver implements IEventStreamObserver {
                     }
 
                     const versionString = this.inProgressDownloads.join(', ');
-                    this.appendLine(`Using this command to download .NET Core version ${acquisitionStarted.version}:${os.EOL}${acquisitionStarted.installCommand}`);
+                    this.appendLine(`Using this command to install .NET Core version ${acquisitionStarted.version}:${os.EOL}${acquisitionStarted.installCommand}`);
                     this.append(`Downloading .NET Core tooling version(s) ${versionString}...`);
                 }
                 break;

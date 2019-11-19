@@ -44,11 +44,11 @@ export class DotnetCoreAcquisitionWorker {
         private readonly eventStream: EventStream
     ) {
         // tslint:disable-next-line: strict-boolean-expressions
-        const dotnetInstallFolder: string = process.env.ARM_DOTNET_INSTALL_FOLDER || '.dotnet';
+        const dotnetInstallFolderName: string = process.env.ARM_DOTNET_INSTALL_FOLDER || '.dotnet';
 
-        const script = os.platform() === 'win32' ? 'dotnet-install.cmd' : 'dotnet-install.sh';
-        this.scriptPath = path.join(this.scriptsPath, script);
-        this.installDir = path.join(this.storagePath, dotnetInstallFolder);
+        const scriptName = os.platform() === 'win32' ? 'dotnet-install.cmd' : 'dotnet-install.sh';
+        this.scriptPath = path.join(this.scriptsPath, scriptName);
+        this.installDir = path.join(this.storagePath, dotnetInstallFolderName);
         const dotnetExtension = os.platform() === 'win32' ? '.exe' : '';
         this.dotnetExecutable = `dotnet${dotnetExtension}`;
         this.acquisitionPromises = {};
@@ -123,7 +123,7 @@ export class DotnetCoreAcquisitionWorker {
         installingVersions.push(version);
         await this.extensionState.update(this.installingVersionsKey, installingVersions);
 
-        //const dotnetInstallDirEscaped = dotnetInstallDir.replace("'", "''");
+        //const dotnetInstallDirEscaped = dotnetInstallDir.replace("'", "''"); asdf
         let dotnetInstallDirEscaped: string;
         if (os.platform() === 'win32') {
             // Need to escape apostrophes with two apostrophes
